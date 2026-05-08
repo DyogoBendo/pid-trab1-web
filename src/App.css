@@ -1,0 +1,28 @@
+.app-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.filter-button {
+  padding: 1rem;
+  background-color: #3a3a3a;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.filter-button:hover {
+  background-color: #4a4a4a;
+  transform: translateY(-2px);
+}
