@@ -170,16 +170,14 @@ function App() {
       </header>
       
       <main className="max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
           {LISTA_FILTROS.map((filtro) => (
             <button
               key={filtro.id}
               onClick={() => setFiltroAtivo(filtro)}
               className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg hover:border-blue-500 border border-transparent transition-all text-left flex flex-col items-start focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              <h3 className="text-xl font-bold text-gray-800 mb-2">{filtro.titulo}</h3>
-              <p className="text-sm text-gray-500 line-clamp-2">{filtro.descricao}</p>
-              <span className="mt-4 text-blue-600 font-semibold text-sm">Abrir →</span>
+              <h3 className="text-xl font-bold text-gray-800 mb-2">{filtro.titulo}</h3>              
             </button>
           ))}
         </div>

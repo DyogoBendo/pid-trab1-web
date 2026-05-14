@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import ImagemComDownload from './ImagemComDownload';
 
 const GraficoHistograma = ({ dados, titulo, valorMaximoY }) => (
   <div className="w-full flex flex-col mt-4">
@@ -153,18 +154,23 @@ const processarImagem = async () => {
         <div className="flex flex-col gap-8">                    
           <div className="flex flex-col items-center bg-gray-50 p-4 rounded-xl border border-dashed border-gray-300">
             <h3 className="font-bold text-gray-700 mb-3 text-lg">Imagem Original</h3>
-            <img src={imagemOriginalPreview} alt="Original" className="max-h-64 object-contain rounded shadow-sm" />
+            <ImagemComDownload 
+              src={imagemOriginalPreview} 
+              alt="Original" 
+              nomeArquivo="original.png"
+              imgClassName="max-h-64 object-contain rounded shadow-sm" 
+            />
           </div>          
           {(imagemCinza || imagemProcessada) && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">                            
               <div className="flex flex-col items-center bg-white p-4 rounded-xl border shadow-sm">
                 <h3 className="font-bold text-gray-800 mb-3 text-lg border-b w-full text-center pb-2">Entrada (Escala de Cinza)</h3>
-                {imagemCinza && <img src={imagemCinza} alt="Cinza" className="max-h-80 object-contain rounded shadow-sm border border-gray-200" />}
+                {imagemCinza && <ImagemComDownload src={imagemCinza} alt="Cinza" nomeArquivo="escala_de_cinza.png" imgClassName="max-h-80 object-contain rounded shadow-sm border border-gray-200" />}
                 {dadosHistCinza && <GraficoHistograma dados={dadosHistCinza} titulo="Histograma Original" corBarra="#6b7280" />}
               </div>              
               <div className="flex flex-col items-center bg-white p-4 rounded-xl border shadow-sm">
                 <h3 className="font-bold text-gray-800 mb-3 text-lg border-b w-full text-center pb-2">Resultado Processado</h3>
-                {imagemProcessada && <img src={imagemProcessada} alt="Cinza" className="max-h-80 object-contain rounded shadow-sm border border-gray-200" />}
+                {imagemProcessada && <ImagemComDownload src={imagemProcessada} alt="Processada" nomeArquivo="resultado_filtro.png" imgClassName="max-h-80 object-contain rounded shadow-sm border border-blue-300" />}
                 {dadosHistProcessada && <GraficoHistograma dados={dadosHistProcessada} titulo="Histograma Pós-Filtro" corBarra="#6b7280" />}
               </div>              
 

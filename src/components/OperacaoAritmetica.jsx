@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import ImagemComDownload from './ImagemComDownload';
 
 // Mini-componente do Gráfico reaproveitado (com escala Y travada)
 const GraficoHistograma = ({ dados, titulo, valorMaximoY }) => (
@@ -125,14 +126,12 @@ export default function OperacaoAritmetica({
 
   return (
     <div className="flex flex-col font-sans text-gray-800">
-      
-      {/* CABEÇALHO */}
+            
       <div className="mb-6 border-b pb-4">
         <h2 className="text-2xl font-extrabold text-indigo-700 mb-1">{titulo}</h2>
         <p className="text-gray-600">{descricao}</p>
       </div>
-
-      {/* ÁREA DE CONTROLES */}
+      
       <div className="bg-indigo-50 p-5 rounded-lg border border-indigo-200 mb-8 flex flex-wrap gap-8 items-center shadow-sm">
         
         <div className="flex flex-col gap-1">
@@ -153,12 +152,10 @@ export default function OperacaoAritmetica({
       </div>
 
       {erro && <div className="bg-red-100 text-red-700 font-bold p-3 rounded mb-6 border">{erro}</div>}
-
-      {/* ÁREA DE RESULTADOS */}
+      
       {(preview1 || preview2) && (
         <div className="flex flex-col gap-8">
-          
-          {/* LINHA 1: Imagens Originais (2 colunas) */}
+                    
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="flex flex-col items-center bg-gray-50 p-3 rounded-xl border border-dashed">
               <h3 className="font-bold text-gray-600 mb-2">Original 1</h3>
@@ -169,32 +166,28 @@ export default function OperacaoAritmetica({
               {preview2 ? <img src={preview2} className="max-h-48 object-contain rounded" alt="O2" /> : <div className="h-48 flex items-center text-gray-400">Aguardando...</div>}
             </div>
           </div>
-
-          {/* LINHAS 2 e 3: Só aparecem se o resultado estiver pronto */}
+          
           {processada && (
             <div className="flex flex-col gap-4 mt-4 border-t pt-8">
               
-              <h3 className="text-xl font-bold text-center text-gray-800 mb-4">Análise da Operação</h3>
-
-              {/* LINHA 2: Três Imagens (Cinza 1, Cinza 2, Resultado) */}
+              <h3 className="text-xl font-bold text-center text-gray-800 mb-4">Análise da Operação</h3>              
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 <div className="flex flex-col items-center bg-white p-3 border rounded shadow-sm">
                   <h4 className="font-bold text-gray-800 mb-2 border-b w-full text-center pb-1">Cinza 1</h4>
-                  <img src={cinza1} alt="Cinza 1" className="max-h-64 object-contain rounded border" />
+                  <ImagemComDownload src={cinza1} alt="Cinza1" nomeArquivo="escala_de_cinza1.png" imgClassName="max-h-80 object-contain rounded shadow-sm border border-gray-200" />
                 </div>
                 
                 <div className="flex flex-col items-center bg-white p-3 border rounded shadow-sm">
-                  <h4 className="font-bold text-gray-800 mb-2 border-b w-full text-center pb-1">Cinza 2</h4>
-                  <img src={cinza2} alt="Cinza 2" className="max-h-64 object-contain rounded border" />
+                  <h4 className="font-bold text-gray-800 mb-2 border-b w-full text-center pb-1">Cinza 2</h4>                  
+                  <ImagemComDownload src={cinza2} alt="Cinza2" nomeArquivo="escala_de_cinza2.png" imgClassName="max-h-80 object-contain rounded shadow-sm border border-gray-200" />
                 </div>
                 
                 <div className="flex flex-col items-center bg-indigo-50 p-3 border border-indigo-200 rounded shadow-sm">
-                  <h4 className="font-bold text-indigo-900 mb-2 border-b border-indigo-200 w-full text-center pb-1">Resultado Final</h4>
-                  <img src={processada} alt="Resultado" className="max-h-64 object-contain rounded border border-indigo-300" />
+                  <h4 className="font-bold text-indigo-900 mb-2 border-b border-indigo-200 w-full text-center pb-1">Resultado Final</h4>                  
+                  <ImagemComDownload src={processada} alt="Cinza3" nomeArquivo="escala_de_cinza3.png" imgClassName="max-h-80 object-contain rounded shadow-sm border border-gray-200" />
                 </div>
               </div>
-
-              {/* LINHA 3: Três Histogramas correspondentes */}
+              
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-2">
                 <div className="bg-white p-2 border rounded shadow-sm">
                   <GraficoHistograma dados={histCinza1} titulo="Histograma (Cinza 1)" valorMaximoY={maximoY} />
